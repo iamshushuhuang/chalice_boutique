@@ -1,4 +1,13 @@
-import pandas as pd
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "75dc5313",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    import pandas as pd
 
 # 2022/02-2023/04 story資料
 df1 = pd.read_csv('Jan-11-2023_Apr-11-2023_story.csv')
@@ -22,6 +31,9 @@ selectedigstory['發佈日期'] = selectedigstory['發佈日期'].apply(lambda x
 selectedigstory = selectedigstory.sort_values(by='發佈日期', ascending=False)
 
 selectedigstory.to_csv('story.csv', index=False, encoding='utf-8-sig')
+   ]
+  },
+
 #%%
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
