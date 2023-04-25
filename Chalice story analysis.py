@@ -1,4 +1,22 @@
-{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "75dc5313",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "import pandas as pd\n",
+    "import matplotlib.pyplot as plt\n",
+    "plt.style.use('seaborn')\n",
+    "%matplotlib inline"
+   ]
+  }
+  
+  
+  
+  {
  "cells": [
   {
    "cell_type": "code",
