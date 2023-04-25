@@ -1,0 +1,25 @@
+import pandas as pd
+
+# 2022/02-2023/04 storys資料
+df1 = pd.read_csv('Jan-11-2023_Apr-11-2023_story.csv')
+df2 = pd.read_csv('Jul-11-2022_Oct-10-2022_story.csv')
+df3 = pd.read_csv('Apr-11-2022_Jun-10-2022_story.csv')
+df4 = pd.read_csv('Feb-01-2022_Apr-10-2022_story.csv')
+df5 = pd.read_csv('Jun-11-2022_Jul-10-2022_story.csv')
+df6 = pd.read_csv('Oct-11-2022_Jan-10-2023_story.csv')
+
+# 合併
+alligstory = pd.concat([df1, df2, df3, df4, df5,df6])
+
+# 另存
+selectedigstory = alligstory.loc[:, ['說明', '發佈時間', '永久連結','瀏覽次數','觸及人數',
+                          '分享','追蹤人數','個人檔案瀏覽次數','回覆次數','貼圖點按次數','導覽']]
+
+#資料清理
+selectedigstory[['發佈日期', '發佈時間']] = selectedigstory['發佈時間'].str.split(' ', expand=True)
+
+from datetime import datetime
+selectedigstory['發佈日期'] = selectedigstory['發佈日期'].apply(lambda x: datetime.strptime(x, '%m/%d/%Y').strftime('%Y-%m-%d'))
+selectedigstory = selectedigstory.sort_values(by='發佈日期', ascending=False)
+
+selectedigstory.to_csv('story.csv', index=False, encoding='utf-8-sig')
